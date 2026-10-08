@@ -1,0 +1,10 @@
+{
+  "buildCommand": "pip install -r requirements.txt && python3 scripts/build.py --no-thumbs",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "headers": [
+    {"source": "/static/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=604800"}]},
+    {"source": "/media/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=604800"}]}
+  ]
+}

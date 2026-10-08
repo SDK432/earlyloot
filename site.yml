@@ -1,0 +1,32 @@
+# EarlyLoot site config
+name: EarlyLoot
+# Target domain (not yet registered as of 2026-10-07). Used for canonical URLs, sitemap, Open Graph
+url: https://earlyloot.com
+tagline: Guides & news for the biggest launches
+description: Fan-made guides and news for Call of Duty Modern Warfare 4, ARC Raiders and GTA VI. Release dates, update breakdowns and day-one tips.
+
+games:
+  mw4:
+    name: Modern Warfare 4
+    short: MW4
+    nav: MW4
+    blurb: Infinity Ward's Modern Warfare 4 launches October 23, 2026 on PS5, Xbox Series X|S, PC and Nintendo Switch 2.
+  arc-raiders:
+    name: ARC Raiders
+    short: ARC Raiders
+    nav: ARC Raiders
+    blurb: Embark Studios' extraction shooter. The free Frozen Trail update arrives October 8, 2026 with the new Pendola Pass map.
+  gta6:
+    name: GTA VI
+    short: GTA VI
+    nav: GTA VI
+    blurb: Rockstar's Grand Theft Auto VI launches November 19, 2026 on PS5 and Xbox Series X|S. Pre-load starts November 12.
+
+# Release calendar. date = YYYY-MM-DD (countdown targets local midnight of that day in the visitor's timezone)
+# major: true -> eligible for the homepage hero "next big launch"
+events:
+  - {date: 2026-10-08, game: arc-raiders, label: "ARC Raiders · Frozen Trail update", short: "Frozen Trail", major: true}
+  - {date: 2026-10-16, game: mw4, label: "MW4 · Campaign early access", short: "MW4 Early Access", major: true}
+  - {date: 2026-10-23, game: mw4, label: "MW4 · Launch", short: "MW4 Launch", major: true}
+  - {date: 2026-11-12, game: gta6, label: "GTA VI · Pre-load", short: "GTA VI Pre-load", major: true}
+  - {date: 2026-11-19, game: gta6, label: "GTA VI · Launch (PS5 / Xbox Series X|S)", short: "GTA VI Launch", major: true}

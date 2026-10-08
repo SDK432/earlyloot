@@ -1,0 +1,14 @@
+# EarlyLoot — Railway (same pattern as Boost F1: GitHub repo + Railpack + railway.toml)
+# Build renders the static site into dist/; the start command serves it on $PORT and
+# rebuilds it hourly in-process (countdown hero + scheduled articles stay current).
+
+[build]
+builder = "RAILPACK"
+buildCommand = "python scripts/build.py"
+
+[deploy]
+startCommand = "python scripts/serve.py"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
