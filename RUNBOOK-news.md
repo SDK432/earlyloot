@@ -84,7 +84,7 @@ git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $B64" push ori
 
 ## 6. Verify the deploy
 - Railway MCP: `list-deployments` (service above). Wait until the newest deployment is **SUCCESS**, usually 2–4 minutes. If it is FAILED, run `get-logs` (build) and fix.
-- If no deployment appears for your commit after about 2 minutes, run Railway `connect-service-source` with repo `SDK432/earlyloot` and branch `main`. This re-attaches the push trigger and deploys the latest commit.
+- **Known issue (Oct 9, 2026): pushes do NOT auto-trigger a deploy yet.** The Railway GitHub app probably doesn't have access to this repo; Rick can fix that in GitHub → Settings → Applications → Railway → Repository access. Until then, after every push call Railway `connect-service-source` with projectId `9da86bbb-e909-41d3-b698-ac30f18c90d2`, serviceId `713ad248-305c-47c4-92ef-69e96a9e8451`, repo `SDK432/earlyloot` and branch `main`. It immediately deploys the latest commit of main.
 - `curl -s -o /dev/null -w '%{http_code}\n' https://earlyloot.com/articles/<slug>/` should return 200. Also check that the home page lists it and the thumbnail at `/media/thumbs/<slug>.jpg` returns 200.
 - The server also rebuilds hourly, so date-scheduled posts appear automatically on their date.
 
