@@ -7,6 +7,7 @@ import os, re, sys, json, shutil, datetime, html, glob
 import yaml, markdown
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import thumbs
+import thumbs_v2
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.environ.get('DIST_DIR') or os.path.join(ROOT, 'dist')
@@ -70,9 +71,14 @@ for a in articles:
     out = os.path.join(cache, a['slug'] + '.jpg')
     if '--no-thumbs' not in ARGS or not os.path.exists(out):
         words = a['title'].split()
-        thumbs.render(out, a['game'], a['slug'], t.get('line1', ' '.join(words[:2])),
-                      t.get('line2', ' '.join(words[2:4])), t.get('accent', 'yellow'),
-                      t.get('badge'), a.get('image'))
+        if t.get('style') == 'v2':
+            thumbs_v2.render(out, t.get('lines') or [t.get('line1', ''), t.get('line2', '')], int(t.get('key', 0)),
+                             t.get('label', GAMES.get(a['game'], {}).get('short', '')), t.get('theme', 'fire'),
+                             t.get('character'), t.get('side', 'right'), t.get('badge'), t.get('bg'))
+        else:
+            thumbs.render(out, a['game'], a['slug'], t.get('line1', ' '.join(words[:2])),
+                        t.get('line2', ' '.join(words[2:4])), t.get('accent', 'yellow'),
+                        t.get('badge'), a.get('image'))
     shutil.copy(out, os.path.join(DIST, 'media/thumbs'))
 
 # ---------- favicon ----------
