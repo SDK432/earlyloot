@@ -56,7 +56,7 @@ thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme:
   - `neon` (pink/orange): good for GTA/Vice City.
   - `ice` (blue): good for ARC Frozen Trail and winter.
 - `character`: a transparent PNG in `media/characters/`. `side` is left or right; the text goes on the opposite side.
-  - Available: `mw4-operator.png`, `arc-raider.png`, `gta6-convertible.png` (low resolution, avoid large use), `prop-boombox.png`.
+  - Available: `mw4-skull-operator.png` (original hooded skull-balaclava operator, best for CoD/Warzone), `mw4-operator.png`, `arc-raider.png`, `gta6-convertible.png` (low resolution, avoid large use), `prop-boombox.png`.
   - New characters must be ORIGINAL look-alikes (e.g. a hooded operator with a generic skull-print balaclava, an extraction raider, a weapon close-up). Never Ghost or any official character, and no logos.
   - Generate on a plain background (GenerateImage, done by the parent agent), then cut out:
     ```bash

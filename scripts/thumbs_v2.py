@@ -75,13 +75,17 @@ def background(theme, focus, bg_image=None):
     im.alpha_composite(ht)
     return im
 
-def place_character(im, path, side, light, max_h=700, max_w=620):
+def place_character(im, path, side, light, max_h=700, max_w=700):
     ch = Image.open(path).convert('RGBA'); ch = ch.crop(ch.getbbox())
+    bottom = ch.split()[3].crop((0, ch.height - 2, ch.width, ch.height))
+    cut_at_bottom = sum(1 for v in bottom.getdata() if v > 128) > ch.width * 0.2  # figure cut off at waist/legs
+    if cut_at_bottom: max_w = max(max_w, 800)
     s = min(max_h / ch.height, max_w / ch.width); ch = ch.resize((int(ch.width * s), int(ch.height * s)), Image.LANCZOS)
     ch = ImageEnhance.Contrast(ch).enhance(1.12)
-    x = 30 if side == 'left' else W - ch.width - 30
+    x = (30 if side == 'left' else W - ch.width - 30) if not cut_at_bottom else (-60 if side == 'left' else W - ch.width + 60)
     y = H - ch.height + (10 if ch.height > 500 else -40)
-    if ch.height <= 500: y = (H - ch.height) // 2 + 60
+    if cut_at_bottom: y = H - ch.height + 4
+    elif ch.height <= 500: y = (H - ch.height) // 2 + 60
     a = ch.split()[3]
     # dark outer shadow, then colored rim glow, then the character
     sh = Image.new('RGBA', ch.size, (0, 0, 0, 0)); sh.putalpha(a.filter(ImageFilter.MaxFilter(15)).filter(ImageFilter.GaussianBlur(14)))
