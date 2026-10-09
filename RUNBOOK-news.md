@@ -76,14 +76,15 @@ python3 scripts/published.py add content/articles/<slug>.md
 
 ## 5. Publish
 ```bash
-git add -A && git commit -m "News: <short title>"
+git add -A && git -c user.name="EarlyLoot" -c user.email="y2rick432@gmail.com" commit -m "News: <short title>"
 B64=$(printf 'x-access-token:%s' "$GITHUB_TOKEN_EARLYLOOT" | base64 -w0); \
 git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $B64" push origin main 2>&1 | sed -E 's/(basic|token) [A-Za-z0-9+/=_]+/\1 ***/g'; unset B64
 ```
 - **Never** print or echo the token, or write it to files, git config, remotes or logs. The remote must stay `https://github.com/SDK432/earlyloot.git`. Verify with `git remote -v` and `git config --list | rg -i extraheader` (expect no output).
 
 ## 6. Verify the deploy
-- Railway MCP: `list-deployments` (service above). Wait until the newest deployment is **SUCCESS**, usually 1–3 minutes. If it is FAILED, run `get-logs` (build) and fix.
+- Railway MCP: `list-deployments` (service above). Wait until the newest deployment is **SUCCESS**, usually 2–4 minutes. If it is FAILED, run `get-logs` (build) and fix.
+- If no deployment appears for your commit after about 2 minutes, run Railway `connect-service-source` with repo `SDK432/earlyloot` and branch `main`. This re-attaches the push trigger and deploys the latest commit.
 - `curl -s -o /dev/null -w '%{http_code}\n' https://earlyloot.com/articles/<slug>/` should return 200. Also check that the home page lists it and the thumbnail at `/media/thumbs/<slug>.jpg` returns 200.
 - The server also rebuilds hourly, so date-scheduled posts appear automatically on their date.
 
