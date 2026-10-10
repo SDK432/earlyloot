@@ -5,7 +5,7 @@ game: arc-raiders
 category: news
 date: 2026-10-09
 description: "Embark's Hotfix 2.0.2 fixes invisible weapons, server crashes and a Pendola Pass trap one day after Frozen Trail. ARC Raiders is free to play until Oct 12."
-thumb: {style: v2, label: "ARC RAIDERS", lines: ["HOTFIX", "IS LIVE"], key: 0, theme: ice, character: arc-raider.png, side: right, badge: "NEW"}
+thumb: {style: v2, label: "ARC RAIDERS", lines: ["HOTFIX", "IS LIVE"], key: 0, theme: ice, character: arc-raider-rick-02.png, side: right, bg: media/screenshots/arc-raiders/clean/arc-05.jpg, bg_mode: full, badge: "NEW"}
 sources:
   - {name: "ARC Raiders — Frozen Trail is live! Play for free October 8-12", url: "https://arcraiders.com/news/frozen-trail-is-live"}
   - {name: "ConsolePCGaming — ARC Raiders Hotfix 2.0.2 Targets Weapon Bugs and Server Crashes", url: "https://consolepcgaming.com/arc-raiders-hotfix-2-0-2-targets-weapon-bugs-and-server-crashes/"}

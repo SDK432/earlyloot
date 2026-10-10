@@ -3,3 +3,7 @@ dist-*/
 preview/
 __pycache__/
 *.pyc
+
+# raw gameplay screenshots (large); only cleaned JPGs in */clean/ are committed
+media/screenshots/**/rick-*.png
+media/screenshots/**/*-raw.png

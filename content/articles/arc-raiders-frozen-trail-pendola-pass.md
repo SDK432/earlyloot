@@ -6,7 +6,7 @@ category: news
 featured: true
 date: 2026-10-07
 description: "ARC Raiders' free Frozen Trail update lands October 8 with the Pendola Pass map, the Frigate, three new ARC enemies, Amplified Weapons, an Outpost and more."
-thumb: {line1: "Frozen", line2: "Trail", accent: green, badge: "Oct 8"}
+thumb: {style: v2, label: "ARC RAIDERS", lines: ["FROZEN", "TRAIL"], key: 0, theme: ice, character: arc-raider-rick-06.png, side: right, bg: media/screenshots/arc-raiders/clean/arc-03.jpg, bg_mode: full, badge: "UPDATE"}
 sources:
   - {name: "ARC Raiders — Frozen Trail First Look (Sept 23, 2026)", url: "https://arcraiders.com/news/frozen-trail-content-preview"}
   - {name: "Embark Studios press release via Games Press (Sept 23, 2026)", url: "https://www.gamespress.com/DISCOVER-WHAT-LIES-AT-THE-EDGE-OF-THE-RUST-BELT-IN-ARC-RAIDERS-FROZEN-"}

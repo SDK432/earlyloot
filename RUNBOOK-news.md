@@ -55,7 +55,7 @@ thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme:
   - `volt` (yellow).
   - `neon` (pink/orange): good for GTA/Vice City.
   - `ice` (blue): good for ARC Frozen Trail and winter.
-- `character`: a transparent PNG in `media/characters/`. `side` is left or right; the text goes on the opposite side.
+- `character`: a transparent PNG in `media/characters/`. For ARC Raiders, use Rick's cutouts (see below). `side` is left or right; the text goes on the opposite side.
   - Available: `mw4-skull-operator.png` (original hooded skull-balaclava operator, best for CoD/Warzone), `mw4-operator.png`, `arc-raider.png`, `gta6-convertible.png` (low resolution, avoid large use), `prop-boombox.png`.
   - New characters must be ORIGINAL look-alikes (e.g. a hooded operator with a generic skull-print balaclava, an extraction raider, a weapon close-up). Never Ghost or any official character, and no logos.
   - Generate on a plain background (GenerateImage, done by the parent agent), then cut out:
@@ -63,7 +63,14 @@ thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme:
     python3 -c "from rembg import remove,new_session;from PIL import Image;s=new_session('isnet-general-use');remove(Image.open('in.png'),session=s).save('media/characters/NAME.png')"
     ```
   - Vector props: `scripts/draw_props.py`.
-- Optional `bg: media/screenshots/...jpg` adds a faint, colour-graded scene under the rays.
+- Optional `bg: media/screenshots/...jpg` adds a faint, colour-graded scene under the rays (default `bg_mode: faint`); `bg_mode: full` uses the real scene, colour-graded, as the background.
+- **ARC Raiders thumbnails MUST use Rick's own gameplay images** (never the AI placeholder):
+  - Clean HUD-free scenes (1600x900): `media/screenshots/arc-raiders/clean/arc-01.jpg` … `arc-06.jpg`. Use them as `bg:` with `bg_mode: full`.
+    - 01: forest/rocks; 02: misty path with a downed ARC; 03: swamp boardwalk/tunnel; 04: industrial dome interior; 05: top-down metal floor; 06: rainy open field.
+  - Raider cutouts: `media/characters/arc-raider-rick-01.png`, `-02.png`, `-06.png`. Use them as `character:` (they're cut at the waist and sit on the bottom edge automatically).
+  - **Rotate:** don't reuse the previous ARC post's character or background. Check what's been used with `rg -n "^thumb" content/articles/arc-*.md`, pick a different character/bg pair, and don't put a cutout on its own source screenshot (e.g. avoid rick-02 on arc-02).
+  - Example: `thumb: {style: v2, label: "ARC RAIDERS", lines: ["HOTFIX", "IS LIVE"], key: 0, theme: ice, character: arc-raider-rick-02.png, side: right, bg: media/screenshots/arc-raiders/clean/arc-05.jpg, bg_mode: full, badge: "NEW"}`
+  - New screenshots from Rick: put the raw PNGs at `media/screenshots/arc-raiders/rick-arc-NN.png` (they're gitignored). Add their crop and inpaint rectangles to `scripts/clean_shots.py` and run it. Visually confirm that no HUD remains, especially the player name, the ID string bottom-right, the compass and the prompts. Cut out with rembg (see 3), keeping only the largest component and filling holes.
 - Old-style thumbnails (`line1/line2/accent`) still work.
 - Preview: `python3 scripts/build.py`, then view `media/thumbs/<slug>.jpg`. Check that the text is readable and nothing is cut off.
 

@@ -5,7 +5,7 @@ game: arc-raiders
 category: guide
 date: 2026-10-07
 description: "How ARC Raiders' new Reward Pass works: 60 levels, what the Free and Premium tracks include, what happens to your Raider Decks, and the 1,150-token Premium cost."
-thumb: {line1: "Reward Pass", line2: "Explained", accent: yellow, badge: "Guide"}
+thumb: {style: v2, label: "ARC RAIDERS", lines: ["REWARD", "PASS EXPLAINED"], key: 0, theme: fire, character: arc-raider-rick-01.png, side: left, bg: media/screenshots/arc-raiders/clean/arc-04.jpg, bg_mode: full, badge: "GUIDE"}
 sources:
   - {name: "ARC Raiders — Reward Passes: our new progression mechanic, explained (Sept 28, 2026)", url: "https://arcraiders.com/news/frozen-trail-reward-pass"}
   - {name: "ARC Raiders — Frozen Trail First Look (Sept 23, 2026)", url: "https://arcraiders.com/news/frozen-trail-content-preview"}

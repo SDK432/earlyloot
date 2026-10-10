@@ -74,7 +74,7 @@ for a in articles:
         if t.get('style') == 'v2':
             thumbs_v2.render(out, t.get('lines') or [t.get('line1', ''), t.get('line2', '')], int(t.get('key', 0)),
                              t.get('label', GAMES.get(a['game'], {}).get('short', '')), t.get('theme', 'fire'),
-                             t.get('character'), t.get('side', 'right'), t.get('badge'), t.get('bg'))
+                             t.get('character'), t.get('side', 'right'), t.get('badge'), t.get('bg'), t.get('bg_mode', 'faint'))
         else:
             thumbs.render(out, a['game'], a['slug'], t.get('line1', ' '.join(words[:2])),
                         t.get('line2', ' '.join(words[2:4])), t.get('accent', 'yellow'),

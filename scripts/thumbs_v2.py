@@ -14,6 +14,8 @@ thumb:
   character: prop-boombox.png     # file in media/characters/ (transparent PNG)
   side: right                     # character side: left | right
   badge: "NEW"                    # optional corner badge
+  bg: media/screenshots/arc-raiders/clean/arc-03.jpg   # optional real scene behind everything
+  bg_mode: full                   # full = colour-graded real scene; faint (default) = ghosted mono scene
 """
 import os, math, random
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops, ImageEnhance
@@ -40,11 +42,26 @@ def _radial(size, center, inner, outer, radius):
     g = small.resize((w, h), Image.BILINEAR)
     return Image.composite(Image.new('RGB', size, inner), Image.new('RGB', size, outer), g)
 
-def background(theme, focus, bg_image=None):
+def _cover(path):
+    sc = Image.open(path).convert('RGB'); r = max(W / sc.width, H / sc.height)
+    sc = sc.resize((int(sc.width * r + 0.5), int(sc.height * r + 0.5)), Image.LANCZOS)
+    l, t = (sc.width - W) // 2, (sc.height - H) // 2
+    return sc.crop((l, t, l + W, t + H))
+
+def background(theme, focus, bg_image=None, bg_mode='faint'):
     dark, mid, light, ray = THEMES.get(theme, THEMES['fire'])
-    im = _radial((W, H), focus, mid, dark, 900).convert('RGBA')
-    if bg_image and os.path.exists(bg_image):  # faint, color-graded scene underneath
-        sc = Image.open(bg_image).convert('L').resize((W, H)).filter(ImageFilter.GaussianBlur(3))
+    grad = _radial((W, H), focus, mid, dark, 900)
+    if bg_image and not os.path.isabs(bg_image): bg_image = os.path.join(ROOT, bg_image)
+    full = bool(bg_image and os.path.exists(bg_image) and bg_mode == 'full')
+    if full:  # real scene, colour-graded toward the theme (soft-light-ish blend), slightly blurred so the subject pops
+        sc = _cover(bg_image).filter(ImageFilter.GaussianBlur(2))
+        sc = ImageEnhance.Contrast(ImageEnhance.Brightness(sc).enhance(0.85)).enhance(1.15)
+        im = Image.blend(sc, ImageChops.multiply(sc, grad.point(lambda v: min(255, v * 2))), 0.45).convert('RGBA')
+        im = Image.blend(im, grad.convert("RGBA"), 0.12)
+    else:
+        im = grad.convert('RGBA')
+    if bg_image and os.path.exists(bg_image) and not full:  # faint, color-graded scene underneath
+        sc = _cover(bg_image).convert('L').filter(ImageFilter.GaussianBlur(3))
         sc = Image.merge('RGBA', [sc.point(lambda v: int(v * mid[0] / 255)), sc.point(lambda v: int(v * mid[1] / 255)),
                                   sc.point(lambda v: int(v * mid[2] / 255)), Image.new('L', (W, H), 70)])
         im.alpha_composite(sc)
@@ -53,7 +70,7 @@ def background(theme, focus, bg_image=None):
     for i in range(n):
         a0 = 2 * math.pi * i / n; a1 = a0 + math.pi / n * 0.55
         d.polygon([focus, (focus[0] + R * math.cos(a0), focus[1] + R * math.sin(a0)),
-                   (focus[0] + R * math.cos(a1), focus[1] + R * math.sin(a1))], fill=ray + (55,))
+                   (focus[0] + R * math.cos(a1), focus[1] + R * math.sin(a1))], fill=ray + (35 if full else 55,))
     im.alpha_composite(rays.filter(ImageFilter.GaussianBlur(2)))
     # central glow
     glow = Image.new('RGBA', (W, H)); ImageDraw.Draw(glow).ellipse((focus[0] - 330, focus[1] - 330, focus[0] + 330, focus[1] + 330), fill=light + (150,))
@@ -112,9 +129,9 @@ def _fit(path, txt, size, maxw, stroke):
         size -= 4
     return ImageFont.truetype(path, size)
 
-def render(out, lines, key=0, label=None, theme='fire', character=None, side='right', badge=None, bg_image=None):
+def render(out, lines, key=0, label=None, theme='fire', character=None, side='right', badge=None, bg_image=None, bg_mode='faint'):
     focus = (W - 330, 330) if side == 'right' else (330, 330)
-    im = background(theme, focus, bg_image)
+    im = background(theme, focus, bg_image, bg_mode)
     light = THEMES.get(theme, THEMES['fire'])[2]
     if character:
         p = character if os.path.isabs(character) else os.path.join(ROOT, 'media/characters', character)
