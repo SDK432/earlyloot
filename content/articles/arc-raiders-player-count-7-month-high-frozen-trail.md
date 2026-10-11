@@ -45,7 +45,7 @@ Twitch Drops run longer. According to the [patch notes](https://id.embark.games/
 
 ## Expect queues and known bugs
 
-A crowd this size comes with growing pains. Embark's patch notes list known issues, still being fixed, on Pendola Pass, with the Outpost and with some quests. Players have also reported login and matchmaking problems during peak hours. If you hit a queue, it's the cost of a busy server.
+A crowd this size comes with growing pains. Embark's patch notes list known issues, still being fixed, on Pendola Pass, with the Outpost and with some quests.
 
 ## What's next
 
