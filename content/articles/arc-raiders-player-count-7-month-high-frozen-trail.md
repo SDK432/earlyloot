@@ -43,7 +43,7 @@ Timing helped too. ARC Raiders is [free to play from October 8 to 12](https://ar
 
 Twitch Drops run longer. According to the [patch notes](https://id.embark.games/uk/arc-raiders/support/faq/282-2-0-frozen-trail-update), watching 60 minutes earns the Oxygen Respirator backpack attachment and 120 minutes earns the Mailbox, through **November 4, 2026**.
 
-## Expect queues and known bugs
+## Known bugs
 
 A crowd this size comes with growing pains. Embark's patch notes list known issues, still being fixed, on Pendola Pass, with the Outpost and with some quests.
 
