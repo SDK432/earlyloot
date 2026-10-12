@@ -6,7 +6,7 @@ category: news
 featured: true
 date: 2026-10-09
 description: "Kill rival Operators in Modern Warfare 4's DMZ and you can become Wanted. Here's what Infinity Ward has shown of Bounties, Bounty Stations and leaderboards before the Oct 23 launch."
-thumb: {style: v2, label: "MW4 DMZ", lines: ["WANTED", "BOUNTIES"], key: 0, theme: fire, character: mw4-skull-operator.png, side: left, badge: "NEW"}
+thumb: {style: v2, label: "MW4 DMZ", lines: ["WANTED", "BOUNTIES"], key: 0, theme: fire, character: mw4-rick-08.png, side: left, bg: media/screenshots/mw4-warzone/clean/mw4-16.jpg, bg_mode: full, badge: "NEW"}
 sources:
   - {name: "Call of Duty Blog — DMZ Deep Dive, Part 1: Tour of Duty – Hajin (Oct 5, 2026)", url: "https://www.callofduty.com/blog/2026/10/call-of-duty-modern-warfare-4-dmz-deep-dive-hajin"}
   - {name: "IGN — Call of Duty: Modern Warfare 4 Official DMZ Bounty Systems Trailer (Oct 8, 2026)", url: "https://za.ign.com/call-of-duty-modern-warfare-4/242937/call-of-duty-modern-warfare-4-official-dmz-bounty-systems-trailer"}

@@ -1,0 +1,27 @@
+[
+ {
+  "slug": "mw4-campaign-early-access",
+  "character": "mw4-rick-02.png",
+  "bg": "media/screenshots/mw4-warzone/clean/mw4-15.jpg"
+ },
+ {
+  "slug": "mw4-multiplayer-whats-new",
+  "character": "mw4-rick-04.png",
+  "bg": "media/screenshots/mw4-warzone/clean/mw4-11.jpg"
+ },
+ {
+  "slug": "mw4-dmz-bounties-wanted-explained",
+  "character": "mw4-rick-08.png",
+  "bg": "media/screenshots/mw4-warzone/clean/mw4-16.jpg"
+ },
+ {
+  "slug": "mw4-dmz-early-access-october-20",
+  "character": "mw4-rick-01.png",
+  "bg": "media/screenshots/mw4-warzone/clean/mw4-12.jpg"
+ },
+ {
+  "slug": "mw4-pc-preload-october-15-specs",
+  "character": "mw4-rick-05.png",
+  "bg": "media/screenshots/mw4-warzone/clean/mw4-13.jpg"
+ }
+]

@@ -5,7 +5,7 @@ game: mw4
 category: news
 date: 2026-10-11
 description: "Modern Warfare 4 PC preload opens Oct 15 at 9 AM PT for digital pre-purchases. Here are the times, the 115GB SSD rule, TPM 2.0 and the full spec list."
-thumb: {style: v2, label: "MW4", lines: ["PRELOAD", "OCT 15"], key: 0, theme: fire, character: mw4-skull-operator.png, side: right, badge: "PC"}
+thumb: {style: v2, label: "MW4", lines: ["PRELOAD", "OCT 15"], key: 0, theme: fire, character: mw4-rick-05.png, side: right, bg: media/screenshots/mw4-warzone/clean/mw4-13.jpg, bg_mode: full, badge: "PC"}
 sources:
   - {name: "Activision Support — PC System Requirements for Call of Duty: Modern Warfare 4", url: "https://support.activision.com/modern-warfare-4/articles/pc-system-requirements-for-modern-warfare-4"}
   - {name: "Activision Support — Call of Duty: Modern Warfare 4 Editions", url: "https://support.activision.com/modern-warfare-4/articles/modern-warfare-4-editions"}

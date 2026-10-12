@@ -56,7 +56,7 @@ thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme:
   - `neon` (pink/orange): good for GTA/Vice City.
   - `ice` (blue): good for ARC Frozen Trail and winter.
 - `character`: a transparent PNG in `media/characters/`. For ARC Raiders, use Rick's cutouts (see below). `side` is left or right; the text goes on the opposite side.
-  - Available: `mw4-skull-operator.png` (original hooded skull-balaclava operator, best for CoD/Warzone), `mw4-operator.png`, `arc-raider.png`, `gta6-convertible.png` (low resolution, avoid large use), `prop-boombox.png`.
+  - Available: `mw4-rick-01..08.png` (Rick's MW4/Warzone operators, **the only ones allowed for MW4/Warzone**, see below), `arc-raider.png`, `gta6-convertible.png` (low resolution, avoid large use), `prop-boombox.png`.
   - New characters must be ORIGINAL look-alikes (e.g. a hooded operator with a generic skull-print balaclava, an extraction raider, a weapon close-up). Never Ghost or any official character, and no logos.
   - Generate on a plain background (GenerateImage, done by the parent agent), then cut out:
     ```bash
@@ -71,6 +71,13 @@ thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme:
   - **Rotate:** don't reuse the previous ARC post's character or background. Check what's been used with `rg -n "^thumb" content/articles/arc-*.md`, pick a different character/bg pair, and don't put a cutout on its own source screenshot (e.g. avoid rick-02 on arc-02).
   - Example: `thumb: {style: v2, label: "ARC RAIDERS", lines: ["HOTFIX", "IS LIVE"], key: 0, theme: ice, character: arc-raider-rick-02.png, side: right, bg: media/screenshots/arc-raiders/clean/arc-05.jpg, bg_mode: full, badge: "NEW"}`
   - New screenshots from Rick: put the raw PNGs at `media/screenshots/arc-raiders/rick-arc-NN.png` (they're gitignored). Add their crop and inpaint rectangles to `scripts/clean_shots.py` and run it. Visually confirm that no HUD remains, especially the player name, the ID string bottom-right, the compass and the prompts. Cut out with rembg (see 3), keeping only the largest component and filling holes.
+- **MW4/Warzone thumbnails MUST use Rick's own screenshots/cut-outs.** Never the old AI operators (`mw4-skull-operator.png`, `mw4-operator.png`) or `media/screenshots/mw4/placeholder-ai.jpg`, and never old-style thumbs for MW4.
+  - Operator cut-outs (`character:`): `media/characters/mw4-rick-01.png` … `-08.png`. 01–03: purple-haired operator (01 full body, 02 aiming, 03 upper body with rifle); 04–08: red-masked hooded ninja operator (04 aiming, 05 rifle across chest, 06 full body aiming, 07 side view, 08 close-up).
+  - Clean HUD-free scenes (`bg:` with `bg_mode: full`), 1600x900, in `media/screenshots/mw4-warzone/clean/`: 11 shooting range, 12 parachute over the island, 13 rooftop pre-deploy, 14 rooftop with red smoke, 15 interior corridor, 16 helicopter over the island. 01–10 are lobby close-ups of the operators (good as a solo full background with no cut-out; don't put a cut-out on top of its own source shot).
+  - **Rotate, and consecutive posts must never repeat an image.** Run `python3 scripts/mw4_images.py next`: it suggests the least-recently-used character + scene, never the previous post's, never a cut-out on its own source shot. After writing the post, record it with `python3 scripts/mw4_images.py use <slug> <character.png> <bg path>`. The log is `content/mw4-image-usage.json` (committed).
+  - Example: `thumb: {style: v2, label: "WARZONE", lines: ["NEW", "MAP"], key: 1, theme: fire, character: mw4-rick-03.png, side: right, bg: media/screenshots/mw4-warzone/clean/mw4-14.jpg, bg_mode: full, badge: "NEW"}`
+  - `label` is plain text only (WARZONE, MW4, MW4 DMZ). Never the official logo, lettering or the in-game MW4 banner.
+  - New screenshots from Rick: put raw PNGs at `media/screenshots/mw4-warzone/rick-mw4-NN.png` (gitignored). Add a crop box and inpaint rects to `scripts/clean_mw4.py` and run it; for cut-outs add the shot to `CUTS` in `scripts/cutout_mw4.py`, then add the new files to `SOURCE` in `scripts/mw4_images.py`. Visually confirm that no UI remains: WARZONE logo, nav bar, MW4 "RESERVAR" banner, left panels, party list/speaker icon, minimap, compass, countdown, prompts, ammo widget, and **every gamertag**.
 - Old-style thumbnails (`line1/line2/accent`) still work.
 - Preview: `python3 scripts/build.py`, then view `media/thumbs/<slug>.jpg`. Check that the text is readable and nothing is cut off.
 

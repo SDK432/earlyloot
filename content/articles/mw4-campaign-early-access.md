@@ -6,7 +6,7 @@ category: guide
 featured: true
 date: 2026-10-07
 description: "Modern Warfare 4's Campaign Early Access starts Friday, October 16, 2026 for digital pre-orders on every platform, a week before the October 23 launch."
-thumb: {line1: "Early", line2: "Advantage", accent: green, badge: "Oct 16"}
+thumb: {style: v2, label: "MW4", lines: ["EARLY", "ACCESS"], key: 0, theme: fire, character: mw4-rick-02.png, side: right, bg: media/screenshots/mw4-warzone/clean/mw4-15.jpg, bg_mode: full, badge: "OCT 16"}
 sources:
   - {name: "Call of Duty Blog — Modern Warfare 4: Campaign Early Access Confirmed (June 12, 2026)", url: "https://www.callofduty.com/blog/2026/06/call-of-duty-modern-warfare-4-campaign-early-access"}
   - {name: "Activision Support — Call of Duty: Modern Warfare 4 Editions", url: "https://support.activision.com/modern-warfare-4/articles/modern-warfare-4-editions"}

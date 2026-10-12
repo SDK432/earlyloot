@@ -5,7 +5,7 @@ game: mw4
 category: news
 date: 2026-10-10
 description: "Infinity Ward confirms Modern Warfare 4's DMZ Early Access opens Tuesday, October 20 for digital pre-orders, three days before the Oct 23 launch."
-thumb: {style: v2, label: "MW4", lines: ["DMZ", "3 DAYS EARLY"], key: 0, theme: volt, character: mw4-operator.png, side: right, badge: "OCT 20"}
+thumb: {style: v2, label: "MW4", lines: ["DMZ", "3 DAYS EARLY"], key: 0, theme: volt, character: mw4-rick-01.png, side: right, bg: media/screenshots/mw4-warzone/clean/mw4-12.jpg, bg_mode: full, badge: "OCT 20"}
 sources:
   - {name: "Call of Duty Staff — DMZ Deep Dive, Part 2: FOB Intel Guide (Oct 9, 2026)", url: "https://news.blizzard.com/en-us/article/24306097/dmz-deep-dive-part-2-fob-intel-guide"}
   - {name: "Dexerto — Modern Warfare 4 DMZ Early Access announced (Oct 9, 2026)", url: "https://www.dexerto.com/call-of-duty/modern-warfare-4-dmz-early-access-announced-how-to-play-early-3417431/"}

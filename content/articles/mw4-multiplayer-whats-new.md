@@ -5,7 +5,7 @@ game: mw4
 category: news
 date: 2026-10-07
 description: "Everything Infinity Ward has confirmed for Modern Warfare 4 multiplayer: no bloom, new movement, 12 core maps, Kill Block, Gunny, Apex Attachments and two Prestige paths."
-thumb: {line1: "MW4", line2: "No Bloom", accent: yellow, badge: "Oct 23"}
+thumb: {style: v2, label: "MW4", lines: ["NO", "BLOOM"], key: 1, theme: volt, character: mw4-rick-04.png, side: left, bg: media/screenshots/mw4-warzone/clean/mw4-11.jpg, bg_mode: full, badge: "OCT 23"}
 sources:
   - {name: "Call of Duty Blog — Announcing Call of Duty: Modern Warfare 4 (May 28, 2026)", url: "https://www.callofduty.com/blog/2026/05/call-of-duty-modern-warfare-4-announcement"}
   - {name: "Call of Duty: Modern Warfare 4 official site", url: "https://www.callofduty.com/modernwarfare4"}
