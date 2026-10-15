@@ -53,13 +53,14 @@ def background(theme, focus, bg_image=None, bg_mode='faint'):
     grad = _radial((W, H), focus, mid, dark, 900)
     if bg_image and not os.path.isabs(bg_image): bg_image = os.path.join(ROOT, bg_image)
     full = bool(bg_image and os.path.exists(bg_image) and bg_mode == 'full')
-    if full:  # real scene, colour-graded toward the theme (soft-light-ish blend), slightly blurred so the subject pops
-        sc = _cover(bg_image).filter(ImageFilter.GaussianBlur(2))
-        sc = ImageEnhance.Contrast(ImageEnhance.Brightness(sc).enhance(0.85)).enhance(1.15)
-        im = Image.blend(sc, ImageChops.multiply(sc, grad.point(lambda v: min(255, v * 2))), 0.45).convert('RGBA')
-        im = Image.blend(im, grad.convert("RGBA"), 0.12)
-    else:
-        im = grad.convert('RGBA')
+    if full:  # photoreal cover: natural photo, only a soft dark gradient behind the text side (Rick, Oct 15)
+        im = _cover(bg_image).convert('RGBA')
+        text_left = focus[0] > W / 2  # focus is the character side; text goes opposite
+        g = Image.linear_gradient('L').rotate(90 if text_left else -90).resize((W, H))
+        g = g.point(lambda v: int(max(0, v - 60) * 170 / 195))  # up to ~67% black at the text edge, clear past mid
+        sh = Image.new('RGBA', (W, H), (0, 0, 0, 255)); sh.putalpha(g); im.alpha_composite(sh)
+        return im
+    im = grad.convert('RGBA')
     if bg_image and os.path.exists(bg_image) and not full:  # faint, color-graded scene underneath
         sc = _cover(bg_image).convert('L').filter(ImageFilter.GaussianBlur(3))
         sc = Image.merge('RGBA', [sc.point(lambda v: int(v * mid[0] / 255)), sc.point(lambda v: int(v * mid[1] / 255)),
@@ -159,9 +160,9 @@ def render(out, lines, key=0, label=None, theme='fire', character=None, side='ri
         d = ImageDraw.Draw(im); bf = ImageFont.truetype(F_KEY, 46); bwid = bf.getbbox(badge.upper())[2] + 44
         bx = 34 if side == 'right' else W - bwid - 34
         d.rounded_rectangle((bx, 30, bx + bwid, 100), 12, fill=YEL, outline=BLACK, width=5); d.text((bx + 22, 36), badge.upper(), font=bf, fill=BLACK)
-    # vignette
-    v = Image.new('L', (W, H), 0); ImageDraw.Draw(v).rectangle((0, 0, W, H), outline=255, width=60)
-    im.alpha_composite(Image.merge('RGBA', [Image.new('L', (W, H), 0)] * 3 + [v.filter(ImageFilter.GaussianBlur(50)).point(lambda p: int(p * .55))]))
+    # vignette (not on photoreal full-bleed covers)
+    if not (bg_mode == 'full' and bg_image): v = Image.new('L', (W, H), 0); ImageDraw.Draw(v).rectangle((0, 0, W, H), outline=255, width=60)
+    if not (bg_mode == 'full' and bg_image): im.alpha_composite(Image.merge('RGBA', [Image.new('L', (W, H), 0)] * 3 + [v.filter(ImageFilter.GaussianBlur(50)).point(lambda p: int(p * .55))]))
     os.makedirs(os.path.dirname(out), exist_ok=True)
     im.convert('RGB').save(out, quality=88, optimize=True, progressive=True)
     return out
