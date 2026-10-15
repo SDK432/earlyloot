@@ -11,7 +11,7 @@ thumb:
   lines: ["RADIO", "REVEALED"]    # 2-4 words total, top to bottom
   key: 0                          # index of the huge yellow line
   theme: fire                     # fire | volt | neon | ice
-  character: prop-boombox.png     # file in media/characters/ (transparent PNG)
+  character: mw4-rick-03.png     # file in media/characters/ (transparent PNG)
   side: right                     # character side: left | right
   badge: "NEW"                    # optional corner badge
   bg: media/screenshots/arc-raiders/clean/arc-03.jpg   # optional real scene behind everything
@@ -133,6 +133,8 @@ def render(out, lines, key=0, label=None, theme='fire', character=None, side='ri
     focus = (W - 330, 330) if side == 'right' else (330, 330)
     im = background(theme, focus, bg_image, bg_mode)
     light = THEMES.get(theme, THEMES['fire'])[2]
+    if character and (os.path.basename(str(character)).startswith('prop-') or 'draw_props' in str(character)):
+        raise SystemExit(f'Refusing drawn/vector prop {character}: props are banned for all games (see RUNBOOK-news.md)')
     if character:
         p = character if os.path.isabs(character) else os.path.join(ROOT, 'media/characters', character)
         place_character(im, p, side, light)
@@ -166,7 +168,7 @@ def render(out, lines, key=0, label=None, theme='fire', character=None, side='ri
 
 if __name__ == '__main__':  # quick demo set
     o = os.path.join(ROOT, 'preview')
-    render(f'{o}/v2-demo-gta.jpg', ['GTA VI', 'RADIO', 'REVEALED'][1:], key=0, label='GTA VI', theme='neon', character='prop-boombox.png', side='right', badge='NEW')
+    render(f'{o}/v2-demo-gta.jpg', ['GTA VI', 'RADIO', 'REVEALED'][1:], key=0, label='GTA VI', theme='neon', bg_image=os.path.join(ROOT,'media/characters/gta6-neon-street-musclecar.jpg'), bg_mode='full', side='left', badge='NEW')
     render(f'{o}/v2-demo-mw4.jpg', ['SOLO', 'PLAYER'], key=0, label='MW4', theme='fire', character='mw4-operator.png', side='left')
     render(f'{o}/v2-demo-arc.jpg', ['FROZEN', 'TRAIL LIVE'], key=0, label='ARC RAIDERS', theme='ice', character='arc-raider.png', side='right')
     print('ok')

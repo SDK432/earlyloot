@@ -46,7 +46,7 @@ python3 scripts/new_article.py <mw4|arc-raiders|gta6> news "SEO Title"   # creat
 ## 3. Thumbnail (style v2, 1280x720)
 Front matter:
 ```yaml
-thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme: neon, character: prop-boombox.png, side: right, badge: "NEW"}
+thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme: neon, bg: media/characters/gta6-<scene>.jpg, bg_mode: full, side: left, badge: "NEW"}
 ```
 - `label`: the game name as **plain bold text** (WARZONE, MW4, ARC RAIDERS, GTA VI). Never use the official logo or its lettering.
 - `lines`: 2–4 words in total. `key` is the index of the huge yellow word; the other lines are white.
@@ -56,13 +56,16 @@ thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme:
   - `neon` (pink/orange): good for GTA/Vice City.
   - `ice` (blue): good for ARC Frozen Trail and winter.
 - `character`: a transparent PNG in `media/characters/`. For ARC Raiders, use Rick's cutouts (see below). `side` is left or right; the text goes on the opposite side.
-  - Available: `mw4-rick-01..08.png` (Rick's MW4/Warzone operators, **the only ones allowed for MW4/Warzone**, see below), `arc-raider.png`, `gta6-convertible.png` (low resolution, avoid large use), `prop-boombox.png`.
+  - Available: `mw4-rick-01..08.png` (Rick's MW4/Warzone operators, **the only ones allowed for MW4/Warzone**, see below), `arc-raider.png`, `gta6-convertible.png` (low resolution, avoid large use).
   - New characters must be ORIGINAL look-alikes (e.g. a hooded operator with a generic skull-print balaclava, an extraction raider, a weapon close-up). Never Ghost or any official character, and no logos.
   - Generate on a plain background (GenerateImage, done by the parent agent), then cut out:
     ```bash
     python3 -c "from rembg import remove,new_session;from PIL import Image;s=new_session('isnet-general-use');remove(Image.open('in.png'),session=s).save('media/characters/NAME.png')"
     ```
-  - Vector props: `scripts/draw_props.py`.
+  - **NEVER use drawn/vector props (`scripts/draw_props.py`, `prop-*.png` such as the helicopter or boombox) for ANY game.** Rick rejected them; `thumbs_v2.py` now refuses them.
+- **GTA VI thumbnails MUST ALWAYS be a freshly generated, photoreal, cinematic full-bleed scene** (GenerateImage, done by the parent agent), in the style of Rick's GTA references: warm orange/pink sunset or neon city, police helicopters with searchlights over a skyline, muscle cars, highways at golden hour, beaches, Vice City vibe. No logos, no real people, no official characters, never the reference images themselves (they may be official art).
+  - Use it as `bg: media/characters/gta6-<scene>.jpg`, `bg_mode: full`, no `character:`, `side: left` (text side). New scene every post; never reuse an earlier GTA image (check `rg -n "^thumb" content/articles/gta-*.md`).
+  - Before building, confirm the generated file exists on disk (`ls -la media/characters/gta6-<scene>.jpg`) and look at it: it must be photoreal with no drawn/cartoon elements. If the image can't be saved, retry generating; NEVER fall back to props or placeholders.
 - Optional `bg: media/screenshots/...jpg` adds a faint, colour-graded scene under the rays (default `bg_mode: faint`); `bg_mode: full` uses the real scene, colour-graded, as the background.
 - **ARC Raiders thumbnails MUST use Rick's own gameplay images** (never the AI placeholder):
   - Clean HUD-free scenes (1600x900): `media/screenshots/arc-raiders/clean/arc-01.jpg` … `arc-06.jpg`. Use them as `bg:` with `bg_mode: full`.
