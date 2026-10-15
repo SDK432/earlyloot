@@ -130,6 +130,7 @@ def _fit(path, txt, size, maxw, stroke):
         size -= 4
     return ImageFont.truetype(path, size)
 
+# side = where the main subject (character or photo subject) is; the text always goes on the OPPOSITE side.
 def render(out, lines, key=0, label=None, theme='fire', character=None, side='right', badge=None, bg_image=None, bg_mode='faint'):
     focus = (W - 330, 330) if side == 'right' else (330, 330)
     im = background(theme, focus, bg_image, bg_mode)
@@ -140,7 +141,8 @@ def render(out, lines, key=0, label=None, theme='fire', character=None, side='ri
         p = character if os.path.isabs(character) else os.path.join(ROOT, 'media/characters', character)
         place_character(im, p, side, light)
     # text block
-    maxw = 690
+    full_photo = bool(bg_image and bg_mode == 'full' and not character)
+    maxw = 520 if full_photo else 690  # photo covers: keep text in the outer ~45% so the subject stays clear
     block = []
     if label: block.append(_text_img(label.upper(), _fit(F_BOLD, label.upper(), 64, 420, 8), WHITE, 8))
     for i, t in enumerate(lines):
@@ -154,6 +156,7 @@ def render(out, lines, key=0, label=None, theme='fire', character=None, side='ri
     T = T.rotate(4, expand=True, resample=Image.BICUBIC)
     if T.height > H - 30: T = T.resize((int(T.width * (H - 30) / T.height), H - 30), Image.LANCZOS)
     cx = (W * 0.33) if side == 'right' else (W * 0.67)
+    if full_photo: cx = (W * 0.25) if side == 'right' else (W * 0.75)
     tx = int(max(10, min(W - T.width - 10, cx - T.width / 2))); ty = (H - T.height) // 2
     im.alpha_composite(T, (tx, ty))
     if badge:
