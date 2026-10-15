@@ -5,7 +5,7 @@ game: gta6
 category: news
 date: 2026-10-14
 description: "Bloomberg's GTA 6 feature: Rockstar confirms Project Americas, explains the NPC-driven delay and says the next game won't take as long."
-thumb: {style: v2, label: "GTA VI", lines: ["WHY 8", "YEARS"], key: 0, theme: fire, character: prop-helicopter.png, side: left, badge: "CONFIRMED"}
+thumb: {style: v2, label: "GTA VI", lines: ["WHY 8", "YEARS"], key: 0, theme: fire, bg: media/characters/gta6-heli-sunset-skyline.jpg, bg_mode: full, side: left, badge: "CONFIRMED"}
 sources:
   - {name: "Bloomberg Businessweek — Inside the Making of Grand Theft Auto 6 (Jason Schreier, Oct 14, 2026)", url: "https://www.bloomberg.com/features/2026-grand-theft-auto-6-making-of/"}
   - {name: "Polygon — Rockstar reveals why GTA 6 took nearly a decade", url: "https://www.polygon.com/gta-6-bloomberg-jason-rockstar-development/"}

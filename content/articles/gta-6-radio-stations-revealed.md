@@ -6,7 +6,7 @@ category: news
 featured: true
 date: 2026-10-09
 description: "Rockstar has revealed six GTA VI radio stations you can preview now, including the return of Flash FM, plus on-demand podcasts and a 34-track GTA VI: The Album out November 19."
-thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme: neon, character: prop-boombox.png, side: right, badge: "NEW"}
+thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme: neon, bg: media/characters/gta6-neon-convertible.jpg, bg_mode: full, side: left, badge: "NEW"}
 sources:
   - {name: "Rockstar Games — The Music of Grand Theft Auto VI", url: "https://www.rockstargames.com/VI/music"}
   - {name: "Push Square — GTA 6 In-Game Radio Stations Announced", url: "https://www.pushsquare.com/news/2026/10/gta-6-in-game-radio-stations-announced-and-you-can-preview-them-right-now"}
