@@ -5,7 +5,7 @@ game: mw4
 category: news
 date: 2026-10-16
 description: "Activision confirms MW4 launches Oct 23 as a standalone buy, skipping Game Pass until Holiday 2027. Campaign Early Access for digital pre-orders starts today."
-thumb: {style: v2, label: "MW4", lines: ["NO GAME PASS", "UNTIL 2027"], key: 0, theme: fire, character: mw4-rick-07.png, side: right, bg: media/screenshots/mw4-warzone/clean/mw4-11.jpg, bg_mode: full, badge: "NEW"}
+thumb: {style: v2, label: "MW4", lines: ["NO GAME PASS", "UNTIL 2027"], key: 0, theme: fire, side: right, bg: media/characters/wz-mountain-forest-dawn.jpg, bg_mode: full, badge: "NEW"}
 sources:
   - {name: "Call of Duty blog — Modern Warfare 4 Launches October 23 as a Standalone Release (Oct 15, 2026)", url: "https://www.callofduty.com/blog/2026/10/call-of-duty-intel-modern-warfare-4-launch-xbox-game-pass"}
   - {name: "Activision Support — Call of Duty: Modern Warfare 4 Editions", url: "https://support.activision.com/modern-warfare-4/articles/modern-warfare-4-editions"}
