@@ -5,7 +5,7 @@ game: mw4
 category: news
 date: 2026-10-17
 description: "Modern Warfare 4's campaign early access is live and first impressions from IGN, GameSpot and PC Gamer are glowing. No scores yet. Here's what critics say."
-thumb: {style: v2, label: "MW4", lines: ["CRITICS", "LOVE IT"], key: 1, theme: fire, character: mw4-rick-02.png, side: left, bg: media/screenshots/mw4-warzone/clean/mw4-16.jpg, bg_mode: full, badge: "NEW"}
+thumb: {style: v2, label: "MW4", lines: ["CRITICS", "LOVE IT"], key: 1, theme: fire, side: left, bg: media/characters/bank/mw4-desert-breach.jpg, bg_mode: full, badge: "NEW"}
 sources:
   - {name: "Call of Duty Blog — Modern Warfare 4: Campaign Early Access Now Live (Oct 16, 2026)", url: "https://www.callofduty.com/blog/2026/10/call-of-duty-modern-warfare-4-campaign-early-access-live-now"}
   - {name: "Kotaku — Modern Warfare 4 Campaign Reviews Make It Sound Like It's Surprisingly Good (Oct 17, 2026)", url: "https://kotaku.com/modern-warfare-4-campaign-reviews-make-it-sound-like-its-surprisingly-good-2000746857"}

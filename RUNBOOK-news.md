@@ -67,6 +67,11 @@ thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme:
   - Use it as `bg: media/characters/gta6-<scene>.jpg`, `bg_mode: full`, no `character:`, `side: left` (text side). New scene every post; never reuse an earlier GTA image (check `rg -n "^thumb" content/articles/gta-*.md`).
   - GenerateImage returns a path outside the repo: copy the EXACT returned `/cursor/stores/...` path into `media/characters/gta6-<scene>.jpg` IMMEDIATELY (see "Saving GenerateImage output" above).
   - Before building, confirm the generated file exists on disk (`ls -la media/characters/gta6-<scene>.jpg`) and look at it: it must be photoreal with no drawn/cartoon elements. If the image can't be saved, retry generating; NEVER fall back to props or placeholders.
+- **Cover source order for MW4/Warzone and GTA VI (follow exactly):**
+  1. **Try GenerateImage ONCE** for a fresh photoreal scene, then `cp` the EXACT returned path into `media/characters/<name>.jpg` (see "Saving GenerateImage output"). If the file is on disk, use it.
+  2. **If that fails, use the cover bank** (`content/cover-bank.json`, images in `media/characters/bank/`): `python3 scripts/cover_bank.py next mw4` (or `gta6`) prints an UNUSED image and its subject side. Use it as `bg: <file>, bg_mode: full`, no `character:`, `side: <side from the json>` (text lands opposite). Then mark it: `python3 scripts/cover_bank.py use <file> <slug>` and commit the json with the post. **Never reuse a bank image** (the script refuses).
+  3. After using the bank, run `python3 scripts/cover_bank.py status`. **If fewer than 2 unused remain for that game, say so in the final report** so the parent can generate more.
+  4. **Last resort only:** Rick's screenshots/cut-outs (MW4: `scripts/mw4_images.py`). Never drawn props.
 - **Saving GenerateImage output (all games): this is why images "never reached disk" before.** GenerateImage returns a path like `/cursor/stores/<store>/.../attachments/<hash>.jpg`, and Shell CAN read it there (do NOT look under `/home/box/agent-data/.../assets/`). Right after generating:
   ```bash
   cp "<EXACT returned path>" media/characters/<name>.jpg \

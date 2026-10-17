@@ -1,0 +1,11 @@
+{
+  "_note": "Pre-generated photoreal covers (no logos). side = where the main subject is (use as thumb side:). used_by = slug that used it, or null. Never reuse an image.",
+  "images": [
+    {"file": "media/characters/bank/mw4-desert-breach.jpg", "game": "mw4", "side": "left", "used_by": "mw4-campaign-early-reviews-impressions"},
+    {"file": "media/characters/bank/mw4-rooftop-sniper.jpg", "game": "mw4", "side": "right", "used_by": null},
+    {"file": "media/characters/bank/mw4-ship-rappel.jpg", "game": "mw4", "side": "left", "used_by": null},
+    {"file": "media/characters/bank/gta-speedboat.jpg", "game": "gta6", "side": "left", "used_by": null},
+    {"file": "media/characters/bank/gta-highway-chase.jpg", "game": "gta6", "side": "left", "used_by": null},
+    {"file": "media/characters/bank/gta-keys-road.jpg", "game": "gta6", "side": "left", "used_by": null}
+  ]
+}
