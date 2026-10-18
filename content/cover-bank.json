@@ -11,7 +11,7 @@
       "file": "media/characters/bank/mw4-rooftop-sniper.jpg",
       "game": "mw4",
       "side": "right",
-      "used_by": null
+      "used_by": "warzone-mw4-integration-hajin-vondel-zipline"
     },
     {
       "file": "media/characters/bank/mw4-ship-rappel.jpg",
