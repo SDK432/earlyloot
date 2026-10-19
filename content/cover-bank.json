@@ -36,6 +36,30 @@
       "game": "gta6",
       "side": "left",
       "used_by": null
+    },
+    {
+      "file": "media/characters/bank/mw4-snow-street.jpg",
+      "game": "mw4",
+      "side": "left",
+      "used_by": null
+    },
+    {
+      "file": "media/characters/bank/mw4-heli-door-night.jpg",
+      "game": "mw4",
+      "side": "right",
+      "used_by": "mw4-mrbeast-1-million-dmz-video-early-access"
+    },
+    {
+      "file": "media/characters/bank/gta-beach-drift.jpg",
+      "game": "gta6",
+      "side": "left",
+      "used_by": null
+    },
+    {
+      "file": "media/characters/bank/gta-neon-rain.jpg",
+      "game": "gta6",
+      "side": "left",
+      "used_by": null
     }
   ]
 }
