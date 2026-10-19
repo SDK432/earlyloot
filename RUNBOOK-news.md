@@ -104,6 +104,10 @@ thumb: {style: v2, label: "GTA VI", lines: ["RADIO", "REVEALED"], key: 0, theme:
 - Old-style thumbnails (`line1/line2/accent`) still work.
 - Preview: `python3 scripts/build.py`, then view `media/thumbs/<slug>.jpg`. Check that the text is readable and nothing is cut off.
 
+## Google Analytics (do not remove)
+- GA4 property **EarlyLoot**, measurement ID `G-NTL0BRKWXM` (zero after `NTL`). The gtag.js snippet lives in `scripts/build.py` (`GA_ID` / `GA_TAG`, injected right after `<head>` in `layout()`), so every generated page gets it.
+- The GA tag must stay in the templates. Any new page template or layout must include `{GA_TAG}` right after `<head>`. After a build, `rg -c "G-NTL0BRKWXM" dist/index.html` should be non-zero.
+
 ## 4. Build and check locally
 ```bash
 python3 scripts/build.py          # must print "Built N articles…" without errors

@@ -99,6 +99,11 @@ favicons()
 NAV = [('MW4', '/mw4/'), ('ARC Raiders', '/arc-raiders/'), ('GTA VI', '/gta6/'), ('Guides', '/guides/'), ('News', '/news/')]
 EV_JSON = json.dumps([{'date': str(x['date']), 'label': x['label'], 'game': x['game']} for x in events])
 
+# Google Analytics 4 (property "EarlyLoot"). Must stay in layout() so every page is tracked.
+GA_ID = 'G-NTL0BRKWXM'
+GA_TAG = (f'<!-- Google tag (gtag.js) -->\n<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>\n'
+          f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA_ID}');</script>\n")
+
 def logo(): return 'Early<b>Loot</b>'
 
 def layout(path, title, desc, body, og_img=None, og_type='website', extra_head=''):
@@ -106,7 +111,7 @@ def layout(path, title, desc, body, og_img=None, og_type='website', extra_head='
     img = URL + (og_img or '/media/og-default.jpg')
     navh = ''.join(f'<a href="{u}"{" class=on" if path.startswith(u) else ""}>{n}</a>' for n, u in NAV)
     full_title = title if title.startswith(NAME) else f'{title} | {NAME}'
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
+    return f'''<!doctype html><html lang="en"><head>{GA_TAG}<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(full_title)}</title><meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{canon}"><meta name="theme-color" content="#0b0d12">
