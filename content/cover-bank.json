@@ -35,7 +35,7 @@
       "file": "media/characters/bank/gta-keys-road.jpg",
       "game": "gta6",
       "side": "left",
-      "used_by": null
+      "used_by": "gta-6-narrower-roads-weapon-wheel-rockstar-north"
     },
     {
       "file": "media/characters/bank/mw4-snow-street.jpg",
@@ -59,6 +59,18 @@
       "file": "media/characters/bank/gta-neon-rain.jpg",
       "game": "gta6",
       "side": "left",
+      "used_by": null
+    },
+    {
+      "file": "media/characters/bank/mw4-grass-exfil.jpg",
+      "game": "mw4",
+      "side": "left",
+      "used_by": null
+    },
+    {
+      "file": "media/characters/bank/mw4-warehouse-lasers.jpg",
+      "game": "mw4",
+      "side": "right",
       "used_by": null
     }
   ]
