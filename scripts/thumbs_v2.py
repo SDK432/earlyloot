@@ -48,7 +48,7 @@ def _cover(path):
     l, t = (sc.width - W) // 2, (sc.height - H) // 2
     return sc.crop((l, t, l + W, t + H))
 
-def background(theme, focus, bg_image=None, bg_mode='faint'):
+def background(theme, focus, bg_image=None, bg_mode='faint', shade=1.0):
     dark, mid, light, ray = THEMES.get(theme, THEMES['fire'])
     grad = _radial((W, H), focus, mid, dark, 900)
     if bg_image and not os.path.isabs(bg_image): bg_image = os.path.join(ROOT, bg_image)
@@ -57,7 +57,7 @@ def background(theme, focus, bg_image=None, bg_mode='faint'):
         im = _cover(bg_image).convert('RGBA')
         text_left = focus[0] > W / 2  # focus is the character side; text goes opposite
         g = Image.linear_gradient('L').rotate(90 if text_left else -90).resize((W, H))
-        g = g.point(lambda v: int(max(0, v - 60) * 170 / 195))  # up to ~67% black at the text edge, clear past mid
+        g = g.point(lambda v: int(max(0, v - 60) * 170 / 195 * shade))  # shade<1 = lighter text-side gradient (thumb key `shade`)  # up to ~67% black at the text edge, clear past mid
         sh = Image.new('RGBA', (W, H), (0, 0, 0, 255)); sh.putalpha(g); im.alpha_composite(sh)
         return im
     im = grad.convert('RGBA')
@@ -131,9 +131,9 @@ def _fit(path, txt, size, maxw, stroke):
     return ImageFont.truetype(path, size)
 
 # side = where the main subject (character or photo subject) is; the text always goes on the OPPOSITE side.
-def render(out, lines, key=0, label=None, theme='fire', character=None, side='right', badge=None, bg_image=None, bg_mode='faint'):
+def render(out, lines, key=0, label=None, theme='fire', character=None, side='right', badge=None, bg_image=None, bg_mode='faint', shade=1.0):
     focus = (W - 330, 330) if side == 'right' else (330, 330)
-    im = background(theme, focus, bg_image, bg_mode)
+    im = background(theme, focus, bg_image, bg_mode, shade)
     light = THEMES.get(theme, THEMES['fire'])[2]
     if character and (os.path.basename(str(character)).startswith('prop-') or 'draw_props' in str(character)):
         raise SystemExit(f'Refusing drawn/vector prop {character}: props are banned for all games (see RUNBOOK-news.md)')
