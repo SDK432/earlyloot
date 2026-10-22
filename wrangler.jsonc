@@ -1,0 +1,11 @@
+// EarlyLoot on Cloudflare Workers (static assets). Build: python3 scripts/build.py -> dist/
+// Railway (railway.toml + scripts/serve.py) is untouched and still works.
+{
+  "name": "earlyloot",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}
