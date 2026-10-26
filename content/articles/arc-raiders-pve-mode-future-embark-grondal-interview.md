@@ -4,7 +4,7 @@ slug: arc-raiders-pve-mode-future-embark-grondal-interview
 game: arc-raiders
 category: news
 date: 2026-10-25
-description: "Embark's Aleksander Grøndal says some ARC Raiders players want to play 'without the stress' as the studio weighs PvE's future. An update is due in November."
+description: "Aleksander Grøndal says some ARC Raiders players want to play 'without the stress' as Embark weighs PvE's future. An update is due in November."
 thumb: {style: v2, label: "ARC RAIDERS", lines: ["PVE", "FUTURE"], key: 1, theme: ice, character: arc-raider-rick-06.png, side: right, bg: media/screenshots/arc-raiders/clean/arc-05.jpg, bg_mode: full, badge: "NOV"}
 sources:
   - {name: "MP1st — ARC Raiders Dev on Potential PvE Mode Future", url: "https://mp1st.com/news/arc-raiders-dev-on-potential-pve-mode-future-the-challenge-is-not-undermining-the-premise-of-the-game"}
