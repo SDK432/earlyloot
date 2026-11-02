@@ -130,7 +130,8 @@ def layout(path, title, desc, body, og_img=None, og_type='website', extra_head='
 {body}
 <footer><div class="wrap fgrid"><div><a class="logo d" href="/">{logo()}</a><p>{e(CFG["tagline"])}.</p></div>
 <div><h5>Games</h5><a href="/mw4/">Modern Warfare 4</a><a href="/arc-raiders/">ARC Raiders</a><a href="/gta6/">GTA VI</a></div>
-<div><h5>Site</h5><a href="/guides/">Guides</a><a href="/news/">News</a><a href="/about/">About</a><a href="/privacy/">Privacy &amp; Disclaimer</a></div></div>
+<div><h5>Site</h5><a href="/guides/">Guides</a><a href="/news/">News</a><a href="/about/">About</a><a href="/contact/">Contact</a></div>
+<div><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a></div></div>
 <div class="wrap legal">{NAME} is an independent, fan-made site. Not affiliated with, endorsed or sponsored by Activision, Embark Studios or Rockstar Games. All game names and trademarks belong to their respective owners. Images are our own screenshots or original artwork. © {TODAY.year} {NAME}.</div></footer>
 <script>window.DM_EVENTS={EV_JSON};</script><script src="/static/app.js" defer></script>
 </body></html>'''
@@ -223,7 +224,7 @@ for p in pages:
     path = f'/{p["slug"]}/'
     write(path, layout(path, p['title'], p['description'], f'<main class="wrap page"><h1 class="d">{e(p["title"])}</h1><div class="body">{p["html"]}</div></main>'))
 
-write('404.html', layout('/404', 'Page not found', 'This page does not exist.', '<main class="wrap page"><h1 class="d">404: Wrong drop zone</h1><p>This page doesn\'t exist. <a class="btn" href="/">Back to home</a></p></main>'))
+write('404.html', layout('/404', 'Page not found', 'This page does not exist.', extra_head='<meta name="robots" content="noindex">', body='<main class="wrap page"><h1 class="d">404: Wrong drop zone</h1><p>This page doesn\'t exist. <a class="btn" href="/">Back to home</a></p></main>'))
 
 # default OG image = hero thumb
 shutil.copy(os.path.join(DIST, hero_a['img'].lstrip('/')), os.path.join(DIST, 'media/og-default.jpg'))
@@ -234,5 +235,5 @@ urls = [('/', TODAY)] + [(f'/{k}/', TODAY) for k in GAMES] + [('/guides/', TODAY
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
      ''.join(f'  <url><loc>{URL}{u}</loc><lastmod>{d}</lastmod></url>\n' for u, d in urls) + '</urlset>\n'
 open(os.path.join(DIST, 'sitemap.xml'), 'w').write(sm)
-open(os.path.join(DIST, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {URL}/sitemap.xml\n')
+open(os.path.join(DIST, 'robots.txt'), 'w').write(f'User-agent: Mediapartners-Google\nAllow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: {URL}/sitemap.xml\n')
 print(f'Built {len(articles)} articles, {len(pages)} pages, {len(urls)} sitemap URLs -> {DIST}')

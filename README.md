@@ -20,7 +20,7 @@ Build flags: `--no-thumbs` reuses existing thumbnails and only renders missing o
 |---|---|
 | `site.yml` | Site name, URL, game hubs and the **release calendar** (it drives the countdowns and the homepage hero) |
 | `content/articles/*.md` | Articles (Markdown + YAML front matter) |
-| `content/pages/*.md` | Static pages (About, Privacy & Disclaimer) |
+| `content/pages/*.md` | Static pages (About, Contact, Privacy Policy, Terms, Disclaimer) |
 | `media/screenshots/<game>/` | Background images for thumbnails: `mw4/`, `arc-raiders/`, `gta6/` |
 | `media/thumbs/` | Generated thumbnails (cache, also used as Open Graph images) |
 | `static/` | CSS, JS (live countdown), fonts |

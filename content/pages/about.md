@@ -17,8 +17,16 @@ We only report facts we can trace to an official source, such as publisher blogs
 
 ## Images
 
-The images on EarlyLoot are our own gameplay screenshots or original artwork. We don't use official logos, cover art or promotional wallpapers.
+The images on EarlyLoot are our own gameplay screenshots or original artwork and illustrations made for the site. We don't use official logos, cover art or promotional wallpapers.
+
+## Who runs EarlyLoot
+
+EarlyLoot is run by **Ricardo Aules (Rick)**, a gamer who follows Call of Duty, ARC Raiders and the GTA series. Articles are published under the EarlyLoot Staff byline.
+
+## Independent fan site
+
+EarlyLoot is not affiliated with, endorsed or sponsored by Activision, Infinity Ward, Embark Studios, Rockstar Games or Take-Two Interactive. Read our full [Disclaimer](/disclaimer/).
 
 ## Contact
 
-Spotted a mistake? Let us know and we'll fix it.
+Spotted a mistake, have a tip or a question? Email [y2rick432@gmail.com](mailto:y2rick432@gmail.com) or visit our [Contact page](/contact/). We'll fix errors quickly.
