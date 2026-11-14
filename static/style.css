@@ -43,6 +43,8 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;color:var(--m);font-
 .crumbs{color:var(--m);font-size:13px;margin-bottom:12px}.crumbs a:hover{color:var(--y)}
 .art h1{font-size:50px;line-height:1.05;margin:12px 0}.meta{color:var(--m);font-size:14px;margin-bottom:20px}
 .heroimg{width:100%;height:auto;border-radius:16px;margin-bottom:28px;display:block}
+.body img{width:100%;height:auto;border-radius:14px;margin:8px 0 18px;display:block;border:1px solid var(--line)}
+.body figcaption{color:var(--m);font-size:13px;margin:-10px 0 20px}
 .body h2{font-family:Anton;font-weight:400;text-transform:uppercase;font-size:30px;margin:32px 0 10px;color:var(--y);scroll-margin-top:90px}
 .body p,.body li{font-size:17px;color:#cfd5df}.body p{margin-bottom:14px}.body ul,.body ol{margin:0 0 16px 22px}.body li{margin:4px 0}
 .body a{color:var(--g);text-decoration:underline;text-underline-offset:3px}.body strong{color:#fff}.body em{color:var(--m)}

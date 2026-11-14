@@ -81,6 +81,11 @@ for a in articles:
                         t.get('badge'), a.get('image'))
     shutil.copy(out, os.path.join(DIST, 'media/thumbs'))
 
+# In-article images (guides and similar)
+articles_media = os.path.join(ROOT, 'media/articles')
+if os.path.isdir(articles_media):
+    shutil.copytree(articles_media, os.path.join(DIST, 'media/articles'))
+
 # ---------- favicon ----------
 def favicons():
     from PIL import Image, ImageDraw, ImageFont
